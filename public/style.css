@@ -1,5 +1,18 @@
-h1 {
+h2 {
   font-weight: lighter;
-  font-style: italic;
-  color: grey;
+  font-style: normal;
+  color: #808080;
+}
+
+.dark {
+  color: #ffffff;
+  background-color: #000055;
+}
+
+.color-one {
+  color: #ffe6d5;
+}
+
+.color-two {
+  color: #ffffff;
 }
