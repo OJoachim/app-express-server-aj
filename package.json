@@ -1,0 +1,11 @@
+{
+  "name": "app-express-server-aj",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:OJoachim/app-express-server-aj.git",
+  "author": "Aleksandra Joachimiak",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
