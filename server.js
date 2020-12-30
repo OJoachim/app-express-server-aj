@@ -2,12 +2,33 @@ const express = require('express');
 const path = require('path');
 const hbs = require('express-handlebars');
 
+const multer = require('multer');
+const upload = multer({ dest: 'public/' });
+
 const app = express();
 
 app.engine('.hbs', hbs());
 app.set('view engine', '.hbs');
 
 app.use(express.static(path.join(__dirname, '/public')));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.post('/contact/send-message', upload.single('file'), (req, res) => {
+ 
+  const { author, sender, title, message, file } = req.body;
+
+  if(author && sender && title && message && file) {
+    //res.send('The message has been sent!');
+    res.render('contact', { isSent: true, file });
+  }
+  else {
+    //res.send('You can\'t leave fields empty!')
+    res.render('contact', { isError: true });
+  }
+  
+  //res.json(req.body);
+});
 
 app.get('/', (req, res) => {
   res.render('home');
