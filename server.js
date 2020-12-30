@@ -16,18 +16,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.post('/contact/send-message', upload.single('file'), (req, res) => {
  
-  const { author, sender, title, message, file } = req.body;
+  const { author, sender, title, message } = req.body;
+  const { file } = req.file;
 
-  if(author && sender && title && message && file) {
-    //res.send('The message has been sent!');
+  if(author && sender && title && message) {
     res.render('contact', { isSent: true, file });
   }
   else {
-    //res.send('You can\'t leave fields empty!')
     res.render('contact', { isError: true });
   }
-  
-  //res.json(req.body);
 });
 
 app.get('/', (req, res) => {
